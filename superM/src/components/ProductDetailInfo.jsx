@@ -1,8 +1,16 @@
-import { useOutletContext } from "react-router-dom";
-import Button from "./Button";
+import {useOutletContext} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../store/store.js";
+import Button from "../components/Button.jsx";
 
-export default function ProductDetailInfo({ onProductAdd }) {
+export default function ProductDetailInfo() {
   const product = useOutletContext();
+
+  const dispatch = useDispatch();
+
+  const onProductAdd = () => {
+    dispatch(addProduct(product));
+  };
 
   return (
     <>
@@ -10,7 +18,7 @@ export default function ProductDetailInfo({ onProductAdd }) {
         {product.description} sold at <strong>${product.price}</strong> per
         piece.
       </p>
-      <Button onClick={() => onProductAdd(product)}>${product.price}</Button>
+      <Button onClick={() => onProductAdd()}>${product.price}</Button>
     </>
   );
 }

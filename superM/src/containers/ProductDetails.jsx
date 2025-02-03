@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Routes, Route, useParams, Outlet } from "react-router-dom";
-import useFetch from "./useFetch";
+import useFetch from "../useFetch/useFetch";
 
 export default function ProductDetails(props) {
   const [product, setProduct] = useState({});

@@ -1,45 +1,10 @@
-import { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import Input from "./Input";
-import Button from "./Button";
+import { useSelector } from "react-redux";
+import { cartValueSelector } from "../features/cartSlice";
 
-// TODO: Replace with your own publishable key
-const stripeLoadedPromise = loadStripe("PK_REPLACE_WITH_YOUR_PUBLISHABLE_KEY");
+export default function Cart() {
+  const cart = useSelector(state => state.cart);
 
-export default function Cart({ cart }) {
-  const totalPrice = cart.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
-
-  const [email, setEmail] = useState("");
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-
-    const lineItems = cart.map((product) => {
-      return { price: product.price_id, quantity: product.quantity };
-    });
-
-    stripeLoadedPromise.then((stripe) => {
-      stripe
-        .redirectToCheckout({
-          lineItems: lineItems,
-          mode: "payment",
-          successUrl: "https://superm.react-tutorial.app/",
-          cancelUrl: "https://superm.react-tutorial.app/",
-          customerEmail: email,
-        })
-        .then((response) => {
-          // this will only log if the redirect did not work
-          console.log(response.error);
-        })
-        .catch((error) => {
-          // wrong API key? you will see the error message here
-          console.log(error);
-        });
-    });
-  }
+  const totalPrice = useSelector(cartValueSelector);
 
   return (
     <div className="cart-layout">
@@ -91,25 +56,6 @@ export default function Cart({ cart }) {
                 </tr>
               </tfoot>
             </table>
-            <form className="pay-form" onSubmit={handleFormSubmit}>
-              <p>
-                Enter your email and then click on pay and your products will be
-                delivered to you on the same day!
-                <br />
-                <em>
-                  Enter your own Stripe Publishable Key in Cart.js for the
-                  checkout to work
-                </em>
-              </p>
-              <Input
-                placeholder="Email"
-                onChange={(event) => setEmail(event.target.value)}
-                value={email}
-                type="email"
-                required
-              />
-              <Button type="submit">Pay</Button>
-            </form>
           </>
         )}
       </div>

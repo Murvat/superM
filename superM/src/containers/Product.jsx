@@ -1,13 +1,25 @@
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct, removeProduct } from "../features/cartSlice";
+import Button from "../components/Button";
 
 export default function Product(props) {
   const { details } = props;
 
-  const productFromCart = props.cart.find(
+  const dispatch = useDispatch();
+
+  const cart = useSelector(state => state.cart);
+  const productFromCart = cart.find(
     (product) => product.id === details.id
   );
   const quantity = productFromCart ? productFromCart.quantity : 0;
+
+  const onProductAdd = () => {
+    dispatch(addProduct(details));
+  };
+  const onProductDelete = () => {
+    dispatch(removeProduct(details));
+  };
 
   return (
     <div className="product">
@@ -36,14 +48,14 @@ export default function Product(props) {
           {quantity > 0 && (
             <Button
               outline
-              onClick={() => props.onProductDelete(details.id)}
+              onClick={() => onProductDelete(details.id)}
               className="product-delete"
             >
               x
             </Button>
           )}
         </div>
-        <Button outline onClick={() => props.onProductAdd(details)}>
+        <Button outline onClick={() => onProductAdd(details)}>
           ${details.price}
         </Button>
       </div>

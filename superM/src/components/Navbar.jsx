@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import  {cartCountSelector}  from "../features/cartSlice";
 
-export default function Navbar(props) {
-  const cartCount = props.cart.reduce(
-    (total, product) => total + product.quantity,
-    0
-  );
+export default function Navbar() {
+  const cartCount = useSelector(cartCountSelector);
 
   return (
     <nav className="navbar">
@@ -13,26 +12,17 @@ export default function Navbar(props) {
       </NavLink>
       <ul>
         <li className="nav-item">
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "")}
-            to="/"
-          >
+          <NavLink className={({isActive}) => isActive ? "active" : ""} to="/">
             Home
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "")}
-            to="/about"
-          >
+          <NavLink className={({isActive}) => isActive ? "active" : ""} to="/about">
             About us
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            className={({ isActive }) => (isActive ? "active" : "")}
-            to="/products"
-          >
+          <NavLink className={({isActive}) => isActive ? "active" : ""} to="/products">
             Products
           </NavLink>
         </li>
