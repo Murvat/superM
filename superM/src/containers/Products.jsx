@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Product from "../containers/Product/Product";
-import useFetch from "../useFetch/useFetch";
+import Product from "../containers/Product";
+import useFetch from "../useFetch";
 import Loader from "../components/Loader";
 
 export default function Products(props) {
@@ -8,7 +8,9 @@ export default function Products(props) {
   const { get, loading } = useFetch(
     "https://react-tutorial-demo.firebaseio.com/"
   );
-
+console.log(useFetch(
+    "https://react-tutorial-demo.firebaseio.com/"
+  ))
   useEffect(() => {
     get("supermarket.json")
       .then((data) => {
@@ -16,7 +18,7 @@ export default function Products(props) {
       })
       .catch((error) => console.log("Could not load products", error));
   }, []);
-
+  
   return (
     <div className="products-layout">
       <h1>Products</h1>

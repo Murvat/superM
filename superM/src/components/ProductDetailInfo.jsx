@@ -1,6 +1,6 @@
 import {useOutletContext} from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../store/store.js";
+import { addProduct } from "../features/cartSlice.js";
 import Button from "../components/Button.jsx";
 
 export default function ProductDetailInfo() {

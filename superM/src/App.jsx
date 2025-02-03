@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
-import Home from "./components/Home.js";
-import About from "./components/About.js";
-import Products from "./containers/Product.jsx";
+import Home from "./components/Home.jsx";
+import About from "./components/About.jsx";
+import Products from "./containers/Products.jsx";
 import ProductDetails from "./containers/ProductDetails.jsx";
-import ProductDetailInfo from "./components/ProductDetailInfo.js";
-import ProductDetailNutrition from "./components/ProductDetailNutrition.js";
-import ProductDetailStorage from "./components/ProductDetailStorage.js";
+import ProductDetailInfo from "./components/ProductDetailInfo.jsx";
+import ProductDetailNutrition from "./components/ProductDetailNutrition.jsx";
+import ProductDetailStorage from "./components/ProductDetailStorage.jsx";
 import Cart from "./containers/Cart.jsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
