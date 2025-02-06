@@ -1,7 +1,10 @@
 # E-Commerce Web Application
 
 ## Project Overview
-This project is a React-based e-commerce web application that enables users to browse products, add them to a cart, and proceed to checkout. The project follows modern React development patterns and best practices, with Redux Toolkit for state management.
+This project is a **React-based e-commerce web application** that enables users to browse products, add them to a cart, and proceed to checkout. The project follows modern React development patterns and best practices, with **Redux Toolkit** for state management.
+
+#### Live:
+https://superm-online-store.netlify.app/
 
 ## Technologies Used
 - **React** (Functional Components & Hooks)
@@ -12,7 +15,8 @@ This project is a React-based e-commerce web application that enables users to b
 - **Fetch API** (Data Fetching)
 - **Stripe** (Payment Processing)
 - **Cloudinary** (Image Hosting)
-- **clsx** (Conditional ClassNames Handling)
+- **clsx** (Conditional Class Names Handling)
+
 
 ## Key Concepts and Design Patterns
 
