@@ -28,7 +28,6 @@ State management is handled using Redux Toolkit, centralizing cart logic in a Re
 The project uses **React Redux (v8.1.2)** for integrating Redux with React components.
 
 #### Example Redux Slice:
-```js
 const cartSlice = createSlice({
     name: "cart",
     initialState: { cart: [] },
@@ -46,7 +45,7 @@ const cartSlice = createSlice({
         },
     },
 });
-3. React Router for Navigation
+####  React Router for Navigation
 The application uses React Router for client-side routing. This enables seamless navigation between different pages like:
 
 / (Home Page)
@@ -54,23 +53,17 @@ The application uses React Router for client-side routing. This enables seamless
 /products (Product Listing Page)
 /products/:id (Product Details Page)
 /cart (Shopping Cart)
-4. Global State Integration with Redux
-The store.js file configures Redux with the cartSlice, making it accessible throughout the app.
+####  Global State Integration with Redux
+## The store.js file configures Redux with the cartSlice, making it accessible throughout the app.
 
-js
-Копировать
-Редактировать
 import { configureStore } from "@reduxjs/toolkit";
 import { cartSlice } from "../features/cartSlice";
 
 export const store = configureStore({
     reducer: cartSlice.reducer,
 });
-The Provider from React Redux wraps the entire application, ensuring that Redux state is available globally.
 
-jsx
-Копировать
-Редактировать
+#### The Provider from React Redux wraps the entire application, ensuring that Redux state is available globally.
 import { Provider } from "react-redux";
 import { store } from "./store/store.js";
 
@@ -96,12 +89,9 @@ export default function App() {
     </Provider>
   );
 }
-5. Cart Management with Redux Selectors
-Selectors improve performance by computing derived data efficiently.
+####  Cart Management with Redux Selectors
+## Selectors improve performance by computing derived data efficiently.
 
-js
-Копировать
-Редактировать
 const cartCountSelector = (state) => {
     return state.cart.reduce((total, product) => total + product.quantity, 0);
 };
@@ -111,30 +101,25 @@ const cartValueSelector = (state) => {
         (total, product) => total + product.price * product.quantity, 0
     );
 };
-6. Product Component with Redux Actions
-Products can be added and removed from the cart using Redux actions.
+#### Product Component with Redux Actions
+## Products can be added and removed from the cart using Redux actions.
 
-jsx
-Копировать
-Редактировать
 const onProductAdd = () => {
   dispatch(addProduct(details));
 };
 const onProductDelete = () => {
   dispatch(removeProduct(details));
 };
-7. Persistent Data Storage (LocalStorage)
-The shopping cart state is persisted in LocalStorage, allowing users to retain their cart items even after refreshing the page.
+####  Persistent Data Storage (LocalStorage)
+## The shopping cart state is persisted in LocalStorage, allowing users to retain their cart items even after refreshing the page.
 
-js
-Копировать
-Редактировать
 useEffect(() => {
   if (cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 }, [cart]);
-Features Implemented
+
+#### Features Implemented
 ✅ Dynamic Navigation Bar (Shows cart item count)
 ✅ Product Listing & Details Page (Fetches product details from API)
 ✅ Shopping Cart with Add/Remove Functionality (Redux)
@@ -143,7 +128,7 @@ Features Implemented
 ✅ Optimized API Calls with Custom Hooks
 ✅ Improved UI Styling with clsx and CSS Classes
 ✅ Modular & Reusable Components for Maintainability
-Future Improvements
+## Future Improvements
 🔹 Implement user authentication for personalized experiences
 🔹 Add server-side cart storage for syncing across devices
 🔹 Enhance UI/UX with animations and improved styling
