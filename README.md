@@ -3,7 +3,7 @@
 ## Project Overview
 This project is a **React-based e-commerce web application** that enables users to browse products, add them to a cart, and proceed to checkout. The project follows modern React development patterns and best practices, with **Redux Toolkit** for state management.
 
-#### Live:
+## Live:
 https://superm-online-store.netlify.app/
 
 ## Technologies Used
